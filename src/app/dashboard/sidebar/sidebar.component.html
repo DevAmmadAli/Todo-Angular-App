@@ -1,0 +1,27 @@
+<div class="sidebar-container">
+  <div>
+    <div class="top-detail">
+      <p class="title">Menu</p>
+      <button
+        mat-icon-button
+        (click)="openCloseSideNav(); sideNavService.sideNavEvent(false)"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div class="search">
+      <input type="search" placeholder="Search" required />
+      <span class="search-icon"><mat-icon>search</mat-icon></span>
+    </div>
+    <div class="tasks">
+      <p class="task">Tasks</p>
+      <mat-divider></mat-divider>
+    </div>
+    <mat-nav-list class="list">
+      <ng-container *ngFor="let todo of toDoList | slice : 0 : 9">
+        <a mat-list-item routerLink="." class="item-list">{{ todo.title }}</a>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </mat-nav-list>
+  </div>
+</div>

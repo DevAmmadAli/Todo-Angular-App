@@ -1,0 +1,75 @@
+.task-container {
+  padding: 20px;
+  overflow: auto;
+
+  .top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      display: flex;
+      align-items: center;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+    }
+
+    .text {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+  }
+
+  .content {
+    padding: 20px;
+
+    .add-task {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      height: 56px;
+      color: rgb(124, 124, 124);
+      font-family: "Lexend Deca";
+      background-color: rgba(250, 250, 250, 0);
+      border-radius: 8px;
+      border: 1px solid rgb(235, 235, 235);
+      padding-left: 20px;
+      cursor: pointer;
+    }
+
+    .task {
+      margin: 20px 0px;
+
+      .btn {
+        width: 120px;
+        height: 40px;
+        margin-right: 20px;
+      }
+
+      .del {
+        background-color: rgb(255, 59, 59);
+      }
+
+      ::ng-deep {
+        mat-card-header {
+          display: block;
+        }
+
+        mat-card-content {
+          min-height: 100px !important;
+          padding-top: 10px;
+        }
+
+        mat-card-title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<div class="task-container">
+  <div class="form-side">
+    <div class="form">
+      <form
+        [formGroup]="taskProfile"
+        (ngSubmit)="id ? createTask() : updateTask()"
+      >
+        <h2>Create a Task</h2>
+        <input type="text" placeholder="Title" formControlName="title" />
+        <input
+          type="text"
+          placeholder="Description"
+          formControlName="description"
+        />
+        <input type="date" placeholder="Due Date" formControlName="dueDate" />
+        <button *ngIf="id" class="btn" type="submit">Create Task</button>
+        <button *ngIf="!id" class="btn" type="submit">Edit Task</button>
+      </form>
+    </div>
+  </div>
+</div>

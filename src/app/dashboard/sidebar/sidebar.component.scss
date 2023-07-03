@@ -1,0 +1,82 @@
+.sidebar-container {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(244, 244, 244);
+  border-radius: 16px;
+  border: 0px;
+  padding: 20px;
+  overflow: auto;
+
+  .top-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
+
+  .search {
+    position: relative;
+    margin-bottom: 20px;
+
+    input[type="search"] {
+      outline: none;
+      width: 100%;
+      height: 40px;
+      opacity: 1;
+      padding-left: 40px;
+      background-color: rgba(250, 250, 250, 0);
+      border-radius: 8px;
+      border: 1px solid rgb(235, 235, 235);
+    }
+    .search-icon {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 10px;
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .tasks {
+    .task {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      overflow: auto;
+    }
+  }
+
+  .list {
+    padding-left: 20px;
+
+    .item-list {
+      padding-left: 20px;
+      margin: 10px 0px;
+
+      &:hover,
+      &:focus {
+        background-color: rgb(235, 235, 235);
+        border-radius: 8px;
+        border: 0px;
+      }
+    }
+  }
+}
+
+:host {
+  ::ng-deep {
+    .mdc-list-item__primary-text {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgb(68, 68, 68);
+      font-family: "Lexend Deca";
+    }
+  }
+}

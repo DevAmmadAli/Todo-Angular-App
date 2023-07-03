@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Lexend Deca";
+  src: url("./assets/fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf")
+    format("truetype");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Lexend Deca", serif;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="date"] {
+  border-radius: 8px;
+  border: 1px solid rgb(221, 221, 221);
+  height: 48px;
+  padding: 0px 8px;
+  font-family: "Lexend Deca";
+  font-size: 16px;
+  color: black;
+  width: 100%;
+  margin: 10px 0px;
+  outline: none;
+}
+
+button.btn {
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  height: 48px;
+  background-color: rgb(255, 212, 59);
+  border-radius: 8px;
+  border: 0px;
+  margin-top: 10px;
+  font-weight: 600;
+}

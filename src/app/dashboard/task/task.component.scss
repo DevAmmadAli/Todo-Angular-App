@@ -1,0 +1,27 @@
+.task-container {
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  border: 1px solid rgb(235, 235, 235);
+
+  .form-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 100%;
+
+    .form {
+      width: 50%;
+
+      h2 {
+        font-size: 48px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

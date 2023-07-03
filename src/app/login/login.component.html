@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="img-side"></div>
+  <div class="form-side">
+    <div class="login-form">
+      <form [formGroup]="loginProfile" (ngSubmit)="login()">
+        <h2>Sign in</h2>
+        <input
+          type="email"
+          placeholder="email@gmail.com"
+          formControlName="email"
+        />
+        <p class="error" *ngIf="loginProfile.errors?.['required']">
+          Email is required
+        </p>
+        <input
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <button class="btn" type="submit">Sign In</button>
+        <p>Don't have an account? <span routerLink="/sign-up">Sign up</span></p>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="dashboard-container">
+  <div class="sidebar" [ngClass]="isSideNavOpen ? '' : 'hide'">
+    <app-sidebar
+      [toDoList]="toDoList"
+      (openSideNav)="isSideNavOpen = !isSideNavOpen"
+    ></app-sidebar>
+  </div>
+  <div
+    class="content"
+    [ngStyle]="{ 'margin-left': isSideNavOpen ? '20%' : '0%' }"
+  >
+    <router-outlet></router-outlet>
+  </div>
+</div>
