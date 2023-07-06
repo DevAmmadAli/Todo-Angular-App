@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
-import { ITodo } from 'src/app/models/todo';
+import { ITask } from 'src/app/models/task';
 import { SideNavService } from 'src/app/services/side-nav.service';
-import { TodoService } from 'src/app/services/todo.service';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +9,7 @@ import { TodoService } from 'src/app/services/todo.service';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-  @Input() toDoList!: ITodo[];
+  @Input() taskList!: ITask[];
   sideNavOpenState: boolean = true;
 
   @Output() openSideNav = new EventEmitter();

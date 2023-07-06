@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TodoService } from '../services/todo.service';
-import { ITodo } from '../models/todo';
+import { TaskService } from '../services/task.service';
+import { ITask } from '../models/task';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,16 +9,16 @@ import { ITodo } from '../models/todo';
 })
 export class DashboardComponent {
   isSideNavOpen: boolean = true;
-  toDoList!: ITodo[];
+  taskList!: ITask[];
 
-  constructor(private todoService: TodoService) {
-    this.getToDo();
+  constructor(private taskService: TaskService) {
+    this.getTask();
   }
 
-  getToDo() {
-    this.todoService.getTodos().subscribe(
+  getTask() {
+    this.taskService.getTasks().subscribe(
       (res: any) => {
-        this.toDoList = res.body.todos;
+        this.taskList = res.body.tasks;
       },
       ({ error }) => {
         console.log(error);

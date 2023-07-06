@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -11,10 +16,21 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent {
   signupProfile: FormGroup = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
+    firstName: ['', [Validators.required, Validators.maxLength(12)]],
+    lastName: ['', [Validators.required, Validators.maxLength(12)]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required],
+    password: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(
+          new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])')
+        ),
+        Validators.minLength(8),
+        Validators.maxLength(12),
+        ,
+      ],
+    ],
   });
 
   constructor(
@@ -24,23 +40,29 @@ export class SignUpComponent {
     private router: Router
   ) {}
 
-  login() {
-    this.userService.signUp({ ...this.signupProfile.value }).subscribe(
-      (res) => {
-        this._snackbar.open('Signup Successfully.', '', {
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-          duration: 2000,
-        });
-        this.router.navigate(['login']);
-      },
-      ({ error }) => {
-        this._snackbar.open(error.message, 'Close', {
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-          duration: 2000,
-        });
-      }
-    );
+  signUp() {
+    if (this.signupProfile.valid) {
+      this.userService.signUp({ ...this.signupProfile.value }).subscribe(
+        (res) => {
+          this._snackbar.open('Signup Successfully.', '', {
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            duration: 2000,
+          });
+          this.router.navigate(['login']);
+        },
+        ({ error }) => {
+          this._snackbar.open(error.message, 'Close', {
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            duration: 2000,
+          });
+        }
+      );
+    }
+  }
+
+  getFormControl(name: string) {
+    return this.signupProfile.get(name) as FormControl;
   }
 }

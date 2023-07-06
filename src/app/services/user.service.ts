@@ -12,19 +12,19 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   login(body: IUser) {
-    return this.http.post(`${this.BASE_URL}user/login`, body, {
+    return this.http.post(`${this.BASE_URL}users/login`, body, {
       withCredentials: true,
     });
   }
 
   signUp(body: IUser) {
-    return this.http.post(`${this.BASE_URL}user`, body, {
+    return this.http.post(`${this.BASE_URL}users`, body, {
       withCredentials: true,
     });
   }
 
   getLoginUser() {
-    return this.http.get(`${this.BASE_URL}user/current`, {
+    return this.http.get(`${this.BASE_URL}users/current`, {
       withCredentials: true,
     });
   }

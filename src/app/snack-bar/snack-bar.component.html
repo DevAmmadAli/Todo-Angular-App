@@ -1,1 +1,5 @@
-<p>snack-bar works!</p>
+<div class="snackbar-container">
+  <mat-icon>{{ data?.icon }}</mat-icon>
+  <span>{{ data?.message }}</span>
+  <button mat-button (click)="closeSnackBar()">{{ data?.action }}</button>
+</div>

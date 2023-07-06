@@ -1,0 +1,24 @@
+<input
+  [placeholder]="placeHolder"
+  [type]="inputType"
+  [formControl]="control"
+  [ngClass]="{ invalid: isError() }"
+/>
+<div *ngIf="isError()" class="error">
+  <p *ngIf="getErrorType('required')">{{ name }} is required</p>
+  <p *ngIf="getErrorType('minlength')">
+    You have entered
+    {{ control.errors?.['minlength'].actualLength }} characters but it requires
+    {{ control.errors?.['minlength'].requiredLength }} characters
+  </p>
+  <p *ngIf="getErrorType('maxlength')">
+    You have entered
+    {{ control.errors?.['maxlength'].actualLength }} characters but it requires
+    {{ control.errors?.['maxlength'].requiredLength }} characters
+  </p>
+  <p *ngIf="getErrorType('email')">This is not a valid email</p>
+  <p *ngIf="getErrorType('pattern')">
+    Password mush have one special character, one upper & lower case character
+    and one number
+  </p>
+</div>

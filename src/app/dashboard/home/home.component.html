@@ -8,7 +8,7 @@
       >
         <mat-icon>menu</mat-icon>
       </button>
-      <h2 class="text">Todo List</h2>
+      <h2 class="text">Task List</h2>
     </div>
     <div class="user">
       <h2 class="text">{{ userName }}</h2>
@@ -30,27 +30,27 @@
   <mat-divider></mat-divider>
   <div class="content">
     <div class="add-task" routerLink="task/0">Add New Task</div>
-    <div class="task" *ngFor="let todo of toDoList">
+    <div class="task" *ngFor="let task of taskList">
       <mat-card>
         <mat-card-header>
           <mat-card-title
-            >{{ todo.title
+            >{{ task.title
             }}<mat-card-subtitle>{{
-              todo.dueDate | date
+              task.dueDate | date
             }}</mat-card-subtitle></mat-card-title
           >
         </mat-card-header>
         <mat-divider></mat-divider>
 
         <mat-card-content>
-          <p>{{ todo.description }}</p>
+          <p>{{ task.description }}</p>
         </mat-card-content>
         <mat-divider></mat-divider>
         <mat-card-actions>
-          <button class="btn" [routerLink]="['task', todo._id]">
+          <button class="btn" [routerLink]="['task', task._id]">
             Edit Task
           </button>
-          <button class="btn del" (click)="deleteTodo(todo._id)">
+          <button class="btn del" (click)="deleteTask(task._id)">
             Delete Task
           </button>
         </mat-card-actions>

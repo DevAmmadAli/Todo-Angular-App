@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Form, FormGroup } from '@angular/forms';
+import { FormBuilder, Form, FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import { SnackBarService, snackBarType } from '../services/snack-bar.service';
 
 @Component({
   selector: 'app-login',
@@ -19,27 +21,33 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private _snackbar: MatSnackBar,
+    private snackbarService: SnackBarService,
     private router: Router
   ) {}
 
   login() {
-    this.userService.login({ ...this.loginProfile.value }).subscribe(
-      (res) => {
-        this._snackbar.open('Login Successfull.', '', {
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-          duration: 2000,
-        });
-        this.router.navigate(['dashboard']);
-      },
-      ({ error }) => {
-        this._snackbar.open(error.message, 'Close', {
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-          duration: 2000,
-        });
-      }
-    );
+    if (this.loginProfile.valid) {
+      this.userService.login({ ...this.loginProfile.value }).subscribe(
+        (res) => {
+          this.snackbarService.openSnackBar(
+            'Login successfully.',
+            'Ok',
+            snackBarType.success
+          );
+          this.router.navigate(['dashboard']);
+        },
+        ({ error }) => {
+          this.snackbarService.openSnackBar(
+            error.message,
+            'OK',
+            snackBarType.error
+          );
+        }
+      );
+    }
+  }
+
+  getFormControl(name: string) {
+    return this.loginProfile.get(name) as FormControl;
   }
 }

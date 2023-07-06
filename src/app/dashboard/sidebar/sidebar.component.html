@@ -18,8 +18,8 @@
       <mat-divider></mat-divider>
     </div>
     <mat-nav-list class="list">
-      <ng-container *ngFor="let todo of toDoList | slice : 0 : 9">
-        <a mat-list-item routerLink="." class="item-list">{{ todo.title }}</a>
+      <ng-container *ngFor="let task of taskList | slice : 0 : 9">
+        <a mat-list-item routerLink="." class="item-list">{{ task.title }}</a>
         <mat-divider></mat-divider>
       </ng-container>
     </mat-nav-list>

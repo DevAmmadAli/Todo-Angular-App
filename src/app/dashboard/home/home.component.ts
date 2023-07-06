@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ITodo } from 'src/app/models/todo';
+import { ITask } from 'src/app/models/task';
 import { IUser } from 'src/app/models/user';
 import { SideNavService } from 'src/app/services/side-nav.service';
-import { TodoService } from 'src/app/services/todo.service';
+import { TaskService } from 'src/app/services/task.service';
 import { UserService } from 'src/app/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -14,19 +14,19 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   panelOpenState = false;
-  toDoList!: ITodo[];
+  taskList!: ITask[];
   sideNavOpenState: boolean = false;
   userName: string = '';
 
   constructor(
-    private todoService: TodoService,
+    private taskService: TaskService,
     private sideNavService: SideNavService,
     private userService: UserService,
     private _snackbar: MatSnackBar,
     private router: Router
   ) {
     this.getLoginUser();
-    this.getToDo();
+    this.getTask();
     this.sideNavService.sideNavOpen$.subscribe((res) => {
       this.sideNavOpenState = res;
     });
@@ -36,10 +36,10 @@ export class HomeComponent implements OnInit {
     this.getLoginUser();
   }
 
-  getToDo() {
-    this.todoService.getTodos().subscribe(
+  getTask() {
+    this.taskService.getTasks().subscribe(
       (res: any) => {
-        this.toDoList = res.body.todos;
+        this.taskList = res.body.tasks;
       },
       ({ error }) => {
         console.log(error);
@@ -60,15 +60,15 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  deleteTodo(id: string) {
-    this.todoService.deleteTodo(id).subscribe(
+  deleteTask(id: string) {
+    this.taskService.deleteTask(id).subscribe(
       (res) => {
-        this._snackbar.open('Todo Deleted Successfully.', '', {
+        this._snackbar.open('Task Deleted Successfully.', '', {
           horizontalPosition: 'end',
           verticalPosition: 'top',
           duration: 2000,
         });
-        this.getToDo();
+        this.getTask();
       },
       ({ error }) => {
         this._snackbar.open(error.message, 'Close', {

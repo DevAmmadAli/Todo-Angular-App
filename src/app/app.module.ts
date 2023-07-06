@@ -21,6 +21,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { TaskComponent } from './dashboard/task/task.component';
 import { HomeComponent } from './dashboard/home/home.component';
+import { InputComponent } from './dashboard/input/input.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { HomeComponent } from './dashboard/home/home.component';
     SidebarComponent,
     TaskComponent,
     HomeComponent,
+    InputComponent,
+    SnackBarComponent,
   ],
   imports: [
     BrowserModule,

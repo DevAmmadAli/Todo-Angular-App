@@ -5,11 +5,12 @@
 
   .img-side {
     flex: 50%;
-    background: url("../../assets/main.png");
+    background: url("../../assets/main.svg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 600px 600px;
     background-position: center center;
     border-radius: 16px;
+    background-color: rgb(216, 211, 211);
     margin: 10px;
   }
 

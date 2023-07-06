@@ -2,25 +2,35 @@
   <div class="img-side"></div>
   <div class="form-side">
     <div class="signup-form">
-      <form [formGroup]="signupProfile" (ngSubmit)="login()">
+      <form [formGroup]="signupProfile" (ngSubmit)="signUp()">
         <h2>Sign up</h2>
-        <input
-          type="text"
-          placeholder="First Name"
-          formControlName="firstName"
-        />
-        <input type="text" placeholder="Last Name" formControlName="lastName" />
-        <input
-          type="email"
-          placeholder="email@gmail.com"
-          formControlName="email"
-        />
-        <input
-          type="password"
-          placeholder="Enter your password"
-          formControlName="password"
-        />
-        <button class="btn" type="submit">Sign up</button>
+        <app-input
+          name="First Name"
+          inputType="text"
+          [control]="this.getFormControl('firstName')"
+          placeHolder="First Name"
+        ></app-input>
+        <app-input
+          name="Last Name"
+          inputType="text"
+          [control]="this.getFormControl('lastName')"
+          placeHolder="Last Name"
+        ></app-input>
+        <app-input
+          name="Email"
+          inputType="email"
+          [control]="this.getFormControl('email')"
+          placeHolder="Last Name"
+        ></app-input>
+        <app-input
+          name="Password"
+          inputType="password"
+          [control]="this.getFormControl('password')"
+          placeHolder="Enter your password"
+        ></app-input>
+        <button [disabled]="signupProfile.invalid" class="btn" type="submit">
+          Sign up
+        </button>
         <p>Already have an account? <span routerLink="/login">Login</span></p>
       </form>
     </div>

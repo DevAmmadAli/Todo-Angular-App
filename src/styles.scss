@@ -39,3 +39,54 @@ button.btn {
   margin-top: 10px;
   font-weight: 600;
 }
+
+.success-snackbar,
+.warning-snackbar,
+.error-snackbar {
+  background: #292929;
+  color: whitesmoke;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    width: 140px;
+    height: 90px;
+    border-radius: 50%;
+    background: #01dc6a;
+    position: absolute;
+    left: -40px;
+    z-index: 1;
+    top: -10px;
+    filter: blur(56px);
+  }
+}
+
+.success-snackbar {
+  &::before {
+    background: #01dc6a;
+  }
+
+  .mat-icon {
+    color: #01dc6a;
+  }
+}
+
+.error-snackbar {
+  &::before {
+    background: #fe3451;
+  }
+
+  .mat-icon {
+    color: #fe3451;
+  }
+}
+
+.warning-snackbar {
+  &::before {
+    background: #ffcc00;
+  }
+
+  .mat-icon {
+    color: #ffcc00;
+  }
+}
