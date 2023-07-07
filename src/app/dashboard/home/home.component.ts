@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ITask } from 'src/app/models/task';
-import { IUser } from 'src/app/models/user';
-import { SideNavService } from 'src/app/services/side-nav.service';
 import { TaskService } from 'src/app/services/task.service';
-import { UserService } from 'src/app/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,26 +11,16 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   panelOpenState = false;
   taskList!: ITask[];
-  sideNavOpenState: boolean = false;
   userName: string = '';
 
   constructor(
     private taskService: TaskService,
-    private sideNavService: SideNavService,
-    private userService: UserService,
-    private _snackbar: MatSnackBar,
-    private router: Router
+    private _snackbar: MatSnackBar
   ) {
-    this.getLoginUser();
     this.getTask();
-    this.sideNavService.sideNavOpen$.subscribe((res) => {
-      this.sideNavOpenState = res;
-    });
   }
 
-  ngOnInit(): void {
-    this.getLoginUser();
-  }
+  ngOnInit(): void {}
 
   getTask() {
     this.taskService.getTasks().subscribe(
@@ -45,19 +31,6 @@ export class HomeComponent implements OnInit {
         console.log(error);
       }
     );
-  }
-
-  openCloseSideNav() {
-    this.sideNavOpenState = !this.sideNavOpenState;
-    this.sideNavService.sideNavEvent(this.sideNavOpenState);
-  }
-
-  getLoginUser() {
-    this.userService.getLoginUser().subscribe((res: any) => {
-      console.log(res);
-
-      this.userName = `${res.body.firstName} ${res.body.lastName}`;
-    });
   }
 
   deleteTask(id: string) {
@@ -78,10 +51,5 @@ export class HomeComponent implements OnInit {
         });
       }
     );
-  }
-
-  logout() {
-    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    this.router.navigate(['login']);
   }
 }

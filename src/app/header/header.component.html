@@ -1,0 +1,28 @@
+<div class="top">
+  <div class="title">
+    <button
+      mat-icon-button
+      *ngIf="!sideNavOpenState"
+      (click)="openCloseSideNav()"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h2 class="text">Task List</h2>
+  </div>
+  <div class="user">
+    <h2 class="text">{{ userName }}</h2>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>

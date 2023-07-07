@@ -23,6 +23,7 @@ import { TaskComponent } from './dashboard/task/task.component';
 import { HomeComponent } from './dashboard/home/home.component';
 import { InputComponent } from './dashboard/input/input.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { SnackBarComponent } from './snack-bar/snack-bar.component';
     HomeComponent,
     InputComponent,
     SnackBarComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
