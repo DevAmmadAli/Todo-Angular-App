@@ -4,30 +4,25 @@
   <div class="content">
     <div class="add-task" routerLink="task/0">Add New Task</div>
     <div class="task" *ngFor="let task of taskList">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title
-            >{{ task.title
-            }}<mat-card-subtitle>{{
-              task.dueDate | date
-            }}</mat-card-subtitle></mat-card-title
-          >
-        </mat-card-header>
-        <mat-divider></mat-divider>
-
-        <mat-card-content>
-          <p>{{ task.description }}</p>
-        </mat-card-content>
-        <mat-divider></mat-divider>
-        <mat-card-actions>
-          <button class="btn" [routerLink]="['task', task._id]">
-            Edit Task
-          </button>
-          <button class="btn del" (click)="deleteTask(task._id)">
-            Delete Task
-          </button>
-        </mat-card-actions>
-      </mat-card>
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title> {{task.title}} </mat-panel-title>
+            <p class="mr-3">
+              {{task.dueDate | date}}
+            </p>
+          </mat-expansion-panel-header>
+          <p>{{task.description}}</p>
+          <div class="flex justify-content-end">
+            <button class="btn" [routerLink]="['task', task._id]">
+              Edit Task
+            </button>
+            <button class="btn del" (click)="deleteTask(task._id)">
+              Delete Task
+            </button>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
   </div>
 </div>
